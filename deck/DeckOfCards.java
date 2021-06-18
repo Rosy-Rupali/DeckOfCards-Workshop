@@ -62,6 +62,14 @@ public class DeckOfCards {
 
 		}
 	}
+	
+	private void playerSequence(int totalPlayer) {
+		System.out.println("Enter the sequence of the players ");
+		for(int i=0; i<totalPlayer; i++) {
+			int order = scanner.nextInt(); 
+			playerList.get(i).setTurn(order);
+		}
+	}
 
 	public static void main(String[] args) {
 		DeckOfCards deckOfCard = new DeckOfCards();
