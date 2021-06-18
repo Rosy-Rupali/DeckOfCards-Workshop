@@ -7,6 +7,7 @@
 package deck;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -50,7 +51,8 @@ public class DeckOfCards {
 			for (int i = 1; i <= totalPlayers; i++) {
 
 				System.out.println("Enter the player's name ");
-				String name = scanner.nextLine();
+				String name = scanner.next();
+				scanner.nextLine();
 				Player player = new Player();
 				player.setPlayerName(name);
 				playerList.add(player);
@@ -62,12 +64,27 @@ public class DeckOfCards {
 
 		}
 	}
-	
+
+	/**
+	 * This method is use set the Player's order
+	 * 
+	 * @param totalPlayer : number of players required to play the game
+	 */
 	private void playerSequence(int totalPlayer) {
 		System.out.println("Enter the sequence of the players ");
-		for(int i=0; i<totalPlayer; i++) {
-			int order = scanner.nextInt(); 
+		for (int i = 0; i < totalPlayer; i++) {
+			int order = scanner.nextInt();
 			playerList.get(i).setTurn(order);
+		}
+	}
+	
+	/**
+	 * This method is use to shuffle the cards after distribution to 
+	 * each player
+	 */
+	private void shuffleDeck() {
+		for(int i=0; i<cards.size(); i++) {
+			Collections.shuffle(this.cards);
 		}
 	}
 
@@ -80,6 +97,8 @@ public class DeckOfCards {
 		System.out.println("Enter the number of players ");
 		int totalPlayers = scanner.nextInt();
 		deckOfCard.addPlayers(totalPlayers);
+		deckOfCard.playerSequence(totalPlayers);
+		deckOfCard.shuffleDeck();
 
 	}
 
